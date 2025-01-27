@@ -17,7 +17,8 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "This app needs access to location when open to show your position on the map.",
         "NSLocationAlwaysUsageDescription": "This app needs access to location when in the background."
-      }
+      },
+      "bundleIdentifier": "com.adminExpo.wayApp"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,10 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.adminExpo.wayApp",
-      "permissions": [
-        "ACCESS_COARSE_LOCATION",
-        "ACCESS_FINE_LOCATION"
-      ]
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
