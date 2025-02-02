@@ -3,7 +3,9 @@ import React, { useRef } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Map from '@/components/Map';
-import GoogleTextInput from './GoogleTextInput';
+import GoogleTextInput from '@/components/GoogleTextInput';
+import Categories from '@/components/Categories';
+import { categories } from '@/constants/categories';
 
 const MapLayout = ({
   children,
@@ -24,6 +26,8 @@ const MapLayout = ({
               containerStyle={styles.googleTextInputContainerStyle}
               handlePress={() => {}}
             />
+
+            <Categories categories={categories} />
           </View>
 
           <Map />
@@ -61,11 +65,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 16,
     zIndex: 10,
-    flexDirection: 'row',
+    width: '100%',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
+
   bottomSheetContent: {
     flex: 1,
     padding: 20,
