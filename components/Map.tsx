@@ -1,49 +1,21 @@
-import { Alert, Dimensions, StyleSheet, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import * as Location from 'expo-location';
 import { LocationType } from '@/types/type';
 
-const Map = () => {
-  const [location, setLocation] = useState<LocationType | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      // Request location permissions
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert(
-          'Permission Denied',
-          'Location permission is required to use this feature.'
-        );
-        return;
-      }
-
-      // Get the current location
-      let currentLocation = await Location.getCurrentPositionAsync({});
-      setLocation({
-        latitude: currentLocation.coords.latitude,
-        longitude: currentLocation.coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      });
-    })();
-  }, []);
-
+const Map = ({ location }: { location: LocationType | null }) => {
   if (!location) {
     return <View style={styles.loadingContainer} />;
   }
 
   return (
     <View style={styles.container}>
-      <MapView style={styles.mapStyle} initialRegion={location}>
+      <MapView style={styles.mapStyle} region={location}>
         <Marker
           coordinate={{
             latitude: location.latitude,
             longitude: location.longitude,
           }}
-          title="You are here"
-          description="This is your current location"
         />
       </MapView>
     </View>

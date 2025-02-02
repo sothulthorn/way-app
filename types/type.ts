@@ -1,42 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-// export interface ProductType {
-//   id: number;
-//   title: string;
-//   price: number;
-//   description: string;
-//   images: string[];
-//   category: Category;
-// }
-
-// interface Category {
-//   id: number;
-//   name: string;
-//   image: string;
-// }
-
-// export interface CategoryType {
-//   id: number;
-//   name: string;
-//   image: string;
-// }
-
-// export interface CartItemType {
-//   id: number;
-//   title: string;
-//   price: number;
-//   quantity: number;
-//   image: string;
-// }
-
-// export interface NotificationType {
-//   id: number;
-//   title: string;
-//   message: string;
-//   timestamp: string;
-// }
-
 export interface GoogleInputProps {
   icon?: keyof typeof Ionicons.glyphMap;
   initialLocation?: string;
@@ -57,7 +21,65 @@ export interface LocationType {
 }
 
 export interface Category {
-  id: string;
+  id: number;
   name: string;
   icon?: keyof typeof Ionicons.glyphMap;
+}
+
+export interface Location {
+  address: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface Review {
+  reviewId: number;
+  rating: number;
+  comment: string;
+}
+
+export interface Contact {
+  phone: string;
+  email: string;
+}
+
+export interface OpenHours {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+  saturday: string;
+  sunday: string;
+}
+
+export interface Service {
+  serviceId: number;
+  name: string;
+  categories: string[];
+  description: string;
+}
+
+export interface Product {
+  productId: number;
+  name: string;
+  categories: string[];
+  price: number;
+  description: string;
+}
+
+export interface Business {
+  id: number;
+  name: string;
+  type: 'service' | 'product' | 'mixed';
+  category: string[];
+  description: string;
+  location: Location;
+  reviews: Review[];
+  contact: Contact;
+  images: string[];
+  coverImages: string[];
+  openHours: OpenHours;
+  services?: Service[];
+  products?: Product[];
 }

@@ -8,6 +8,7 @@ import {
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Category } from '@/types/type';
+import { Colors } from '@/constants/Colors';
 
 const Categories = ({ categories }: { categories: Category[] }) => {
   const onSelectCategory = (category: string) => {
@@ -17,7 +18,7 @@ const Categories = ({ categories }: { categories: Category[] }) => {
   return (
     <FlatList
       data={categories}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
       horizontal
       showsHorizontalScrollIndicator={false}
       style={styles.categoryList}
@@ -28,7 +29,7 @@ const Categories = ({ categories }: { categories: Category[] }) => {
           onPress={() => onSelectCategory(item.name)}
         >
           <View style={styles.iconContainer}>
-            <Ionicons name={item.icon} size={20} color="#3B82F6" />
+            <Ionicons name={item.icon} size={20} color={Colors.blue} />
           </View>
           <Text>{item.name}</Text>
         </TouchableOpacity>

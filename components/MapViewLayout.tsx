@@ -6,13 +6,17 @@ import Map from '@/components/Map';
 import GoogleTextInput from '@/components/GoogleTextInput';
 import Categories from '@/components/Categories';
 import { categories } from '@/constants/categories';
+import { LocationType } from '@/types/type';
+import { Colors } from '@/constants/Colors';
 
-const MapLayout = ({
+const MapViewLayout = ({
   children,
   snapPoints,
+  location,
 }: {
   children: React.ReactNode;
   snapPoints: string[];
+  location: LocationType | null;
 }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -30,15 +34,11 @@ const MapLayout = ({
             <Categories categories={categories} />
           </View>
 
-          <Map />
+          <Map location={location} />
         </View>
 
-        <BottomSheet
-          ref={bottomSheetRef}
-          snapPoints={snapPoints || [['20%', '40%', '85%']]}
-          index={0}
-        >
-          <BottomSheetView style={styles.bottomSheetContent}>
+        <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints} index={0}>
+          <BottomSheetView style={[styles.bottomSheetContent, { flex: 1 }]}>
             {children}
           </BottomSheetView>
         </BottomSheet>
@@ -47,7 +47,7 @@ const MapLayout = ({
   );
 };
 
-export default MapLayout;
+export default MapViewLayout;
 
 const styles = StyleSheet.create({
   root: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     flex: 1,
-    backgroundColor: '#3B82F6',
+    backgroundColor: Colors.blue,
   },
   header: {
     position: 'absolute',
@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 10,
   },
-
   bottomSheetContent: {
     flex: 1,
-    padding: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   googleTextInputContainerStyle: {
     backgroundColor: 'white',
