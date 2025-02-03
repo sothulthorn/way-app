@@ -43,11 +43,7 @@ export const businesses: Business[] = [
       'https://i.imgur.com/qrs9QBg.jpeg',
       'https://i.imgur.com/XVp8T1I.jpeg',
     ],
-    coverImages: [
-      'https://i.imgur.com/DMQHGA0.jpeg',
-      'https://i.imgur.com/mwSjmQS.jpeg',
-      'https://i.imgur.com/ztZoPSd.jpeg',
-    ],
+    coverImages: ['https://i.imgur.com/DMQHGA0.jpeg'],
     openHours: {
       monday: '9:00 AM - 6:00 PM',
       tuesday: '9:00 AM - 6:00 PM',
@@ -88,7 +84,17 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 4,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+      },
+      {
+        reviewId: 2,
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+      },
+      {
+        reviewId: 3,
+        rating: 1,
         comment: 'Great coffee, but a bit pricey.',
       },
     ],
@@ -334,6 +340,11 @@ export const businesses: Business[] = [
       {
         reviewId: 1,
         rating: 5,
+        comment: 'Exceptional care for my dog. Highly recommend!',
+      },
+      {
+        reviewId: 2,
+        rating: 3,
         comment: 'Exceptional care for my dog. Highly recommend!',
       },
     ],

@@ -3,11 +3,14 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { Business } from '@/types/type';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Colors } from '@/constants/Colors';
+import { useRouter } from 'expo-router';
 
 const BusinessCard = ({ business }: { business: Business }) => {
+  const router = useRouter();
+
   if (!business) return null;
 
-  const { name, category, location, reviews, coverImages } = business;
+  const { id, name, category, location, reviews, coverImages } = business;
 
   // Calculate the average rating safely
   const averageRating =
@@ -32,7 +35,10 @@ const BusinessCard = ({ business }: { business: Business }) => {
   };
 
   return (
-    <TouchableOpacity style={styles.cardContainer} onPress={() => {}}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => router.push(`/business/${id}`)}
+    >
       <View style={styles.cardContent}>
         <View style={styles.rowBetween}>
           <Image
