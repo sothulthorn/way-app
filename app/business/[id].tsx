@@ -2,10 +2,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Image,
   TouchableOpacity,
   View,
   Dimensions,
+  Animated,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Business } from '@/types/type';
@@ -13,7 +13,7 @@ import { businesses } from '@/constants/business';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
 import ImageCarousel from '@/components/ImageCarousel';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const { width } = Dimensions.get('window');
 
@@ -35,6 +35,27 @@ const BusinessDetailScreen = () => {
 
   const handleTabPress = (section: string) => {
     setActiveSection(section);
+  };
+
+  const averageRating =
+    business.reviews?.length > 0
+      ? business.reviews.reduce((acc, review) => acc + review.rating, 0) /
+        business.reviews.length
+      : 0;
+
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i < rating ? 'star' : 'star-outline'}
+          size={20}
+          color={i < rating ? Colors.blue : Colors.gray}
+        />
+      );
+    }
+    return stars;
   };
 
   return (
@@ -92,13 +113,24 @@ const BusinessDetailScreen = () => {
           <View style={styles.sectionContent}>
             {/* Business Details with Padding */}
             <Text style={styles.title}>{business.name}</Text>
-            <View style={styles.categoryContainer}>
+            <View style={styles.rowCenter}>
               {business.category.map((cat, index) => (
-                <View key={index} style={styles.categoryTag}>
+                <React.Fragment key={index}>
+                  {index > 0 && <Text style={styles.dot}>•</Text>}
                   <Text style={styles.categoryText}>{cat}</Text>
-                </View>
+                </React.Fragment>
               ))}
             </View>
+
+            <View style={styles.rowCenter}>
+              <Text style={styles.ratingText}>{averageRating.toFixed(1)}</Text>
+              {renderStars(averageRating)}
+              <Text numberOfLines={1} style={{ fontSize: 16 }}>
+                ({business.reviews.length}{' '}
+                {business.reviews.length === 1 ? 'review' : 'reviews'})
+              </Text>
+            </View>
+
             <Text style={styles.address}>{business.location.address}</Text>
             <Text style={styles.description}>{business.description}</Text>
           </View>
@@ -155,30 +187,21 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   address: {
-    fontSize: 14,
+    fontSize: 16,
     marginVertical: 8,
+    color: Colors.gray,
   },
   description: {
     fontSize: 16,
     marginTop: 8,
   },
-  categoryContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-    marginVertical: 8,
-  },
-  categoryTag: {
-    backgroundColor: Colors.lightBlue,
-    borderColor: Colors.blue,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
-  },
   categoryText: {
-    fontSize: 12,
-    color: Colors.blue,
+    fontSize: 14,
+    color: Colors.gray,
+  },
+  dot: {
+    fontSize: 14,
+    color: Colors.gray,
   },
   tabsContainer: {
     flexDirection: 'row',
@@ -208,6 +231,16 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   sectionContent: {
-    marginTop: 16,
+    // marginTop: 16,
+  },
+  rowCenter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    marginVertical: 5,
+  },
+  ratingText: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });

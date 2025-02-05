@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { Business } from '@/types/type';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -7,38 +7,26 @@ import { useRouter } from 'expo-router';
 
 const BusinessCard = ({ business }: { business: Business }) => {
   const router = useRouter();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   if (!business) return null;
 
   const { id, name, category, location, reviews, coverImages } = business;
 
-  // Calculate the average rating safely
   const averageRating =
     reviews?.length > 0
       ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length
       : 0;
 
-  // Function to render stars for rating
-  const renderStars = (rating: number) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      stars.push(
-        <Ionicons
-          key={i}
-          name={i < rating ? 'star' : 'star-outline'}
-          size={15}
-          color={i < rating ? Colors.blue : Colors.gray}
-        />
-      );
-    }
-    return stars;
-  };
+  const renderStars = (rating: number) => (
+    <View style={styles.rowCenter}>
+      <Ionicons name="star" size={15} color={Colors.blue} />
+      <Text style={styles.ratingText}>{rating.toFixed(1)}</Text>
+    </View>
+  );
 
   return (
-    <TouchableOpacity
-      style={styles.cardContainer}
-      onPress={() => router.push(`/business/${id}`)}
-    >
+    <TouchableOpacity onPress={() => router.push(`/business/${id}`)}>
       <View style={styles.cardContent}>
         <View style={styles.rowBetween}>
           <Image
@@ -49,33 +37,24 @@ const BusinessCard = ({ business }: { business: Business }) => {
           />
 
           <View style={styles.detailContainer}>
-            <View style={styles.rowCenter}>
+            <View style={styles.rowBetween}>
               <Text style={styles.title} numberOfLines={1}>
                 {name}
               </Text>
-            </View>
-
-            <View style={styles.categoryContainer}>
-              {category.slice(0, 2).map((cat, index) => (
-                <View key={index} style={styles.categoryTag}>
-                  <Text style={styles.categoryText}>{cat}</Text>
-                </View>
-              ))}
-
-              {category.length > 2 && (
-                <View style={styles.categoryTag}>
-                  <Text style={styles.categoryText}>
-                    +{category.length - 2} more
-                  </Text>
-                </View>
-              )}
+              <TouchableOpacity onPress={() => setIsFavorite(!isFavorite)}>
+                <Ionicons
+                  name={isFavorite ? 'heart' : 'heart-outline'}
+                  size={20}
+                  color={isFavorite ? Colors.blue : Colors.gray}
+                />
+              </TouchableOpacity>
             </View>
 
             <View style={styles.rowCenter}>
               {renderStars(averageRating)}
-              <Text numberOfLines={1}>
-                ({reviews.length} {reviews.length === 1 ? 'review' : 'reviews'})
-              </Text>
+              <Text numberOfLines={1}>({reviews.length})</Text>
+              <Text style={styles.dot}>•</Text>
+              <Text style={styles.categoryText}>{category[0]}</Text>
             </View>
 
             <View style={styles.rowCenter}>
@@ -95,16 +74,10 @@ const BusinessCard = ({ business }: { business: Business }) => {
 export default BusinessCard;
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   cardContent: {
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
+    padding: 5,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -120,7 +93,7 @@ const styles = StyleSheet.create({
   detailContainer: {
     flexDirection: 'column',
     marginHorizontal: 20,
-    gap: 8,
+    gap: 10,
     flex: 1,
   },
   image: {
@@ -130,34 +103,29 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: 'bold',
+    color: Colors.blue,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 16,
+    marginTop: 10,
   },
   line: {
     height: 1,
     backgroundColor: Colors.lightGray,
     flex: 1,
   },
-  categoryContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-  },
-  categoryTag: {
-    backgroundColor: Colors.lightBlue,
-    borderColor: Colors.blue,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 4,
-    paddingHorizontal: 10,
-  },
   categoryText: {
-    fontSize: 12,
-    color: Colors.blue,
+    fontSize: 14,
+    color: Colors.gray,
+  },
+  ratingText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  dot: {
+    fontSize: 14,
+    color: Colors.gray,
   },
 });
