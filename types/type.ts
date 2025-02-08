@@ -36,6 +36,22 @@ export interface Review {
   reviewId: number;
   rating: number;
   comment: string;
+  timestamp: string;
+  user: {
+    userId: number;
+    username: string;
+    profilePicture: string;
+  };
+  replies: {
+    replyId: number;
+    replyText: string;
+    replyUser: {
+      userId: number;
+      username: string;
+      profilePicture: string;
+    };
+    timestamp: string;
+  }[];
 }
 
 export interface Contact {
@@ -77,7 +93,7 @@ export interface Business {
   location: Location;
   reviews: Review[];
   contact: Contact;
-  images: string[];
+  images: { id: number; url: string }[];
   coverImages: string[];
   openHours: OpenHours;
   services?: Service[];

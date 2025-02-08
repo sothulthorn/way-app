@@ -30,8 +30,68 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 5,
-        comment: 'Great service! Highly recommend.',
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z',
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4,
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z',
+          },
+        ],
+      },
+      {
+        reviewId: 2,
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
+      },
+      {
+        reviewId: 3,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4,
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z',
+          },
+        ],
       },
     ],
     contact: {
@@ -39,16 +99,19 @@ export const businesses: Business[] = [
       email: 'info@techfix.com',
     },
     images: [
-      'https://i.imgur.com/DMQHGA0.jpeg',
-      'https://i.imgur.com/qrs9QBg.jpeg',
-      'https://i.imgur.com/XVp8T1I.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
+      { id: 4, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 5, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 6, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: ['https://i.imgur.com/DMQHGA0.jpeg'],
     openHours: {
       monday: '9:00 AM - 6:00 PM',
       tuesday: '9:00 AM - 6:00 PM',
       wednesday: '9:00 AM - 6:00 PM',
-      thursday: '9:00 AM - 6:00 PM',
+      thursday: '9:00 AM - 11:00 PM',
       friday: '9:00 AM - 6:00 PM',
       saturday: 'Closed',
       sunday: 'Closed',
@@ -86,16 +149,53 @@ export const businesses: Business[] = [
         reviewId: 1,
         rating: 1,
         comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z', // Timestamp for the review
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4, // Business owner
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z', // Timestamp for the reply
+          },
+        ],
       },
       {
         reviewId: 2,
         rating: 2,
         comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
       },
       {
         reviewId: 3,
         rating: 1,
         comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [],
       },
     ],
     contact: {
@@ -103,9 +203,9 @@ export const businesses: Business[] = [
       email: 'info@cafearoma.com',
     },
     images: [
-      'https://i.imgur.com/vEz2Tg8.jpeg',
-      'https://i.imgur.com/10OZjhs.jpeg',
-      'https://i.imgur.com/JLzO9fY.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: [
       'https://i.imgur.com/qrs9QBg.jpeg',
@@ -166,8 +266,55 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 5,
-        comment: 'Excellent gym with top-notch trainers!',
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z', // Timestamp for the review
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4, // Business owner
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z', // Timestamp for the reply
+          },
+        ],
+      },
+      {
+        reviewId: 2,
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
+      },
+      {
+        reviewId: 3,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [],
       },
     ],
     contact: {
@@ -175,9 +322,9 @@ export const businesses: Business[] = [
       email: 'info@fitprogym.com',
     },
     images: [
-      'https://i.imgur.com/Ugb06yb.jpeg',
-      'https://i.imgur.com/kYpW0ic.jpeg',
-      'https://i.imgur.com/YtPHxFk.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: [
       'https://i.imgur.com/XVp8T1I.jpeg',
@@ -223,8 +370,55 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 4,
-        comment: 'Great service and attention to detail!',
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z', // Timestamp for the review
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4, // Business owner
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z', // Timestamp for the reply
+          },
+        ],
+      },
+      {
+        reviewId: 2,
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
+      },
+      {
+        reviewId: 3,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [],
       },
     ],
     contact: {
@@ -232,9 +426,9 @@ export const businesses: Business[] = [
       email: 'contact@greenthumb.com',
     },
     images: [
-      'https://i.imgur.com/khV8h9h.jpeg',
-      'https://i.imgur.com/h4U1YJz.jpeg',
-      'https://i.imgur.com/YQX6hbO.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: [
       'https://i.imgur.com/qrs9QBg.jpeg',
@@ -282,8 +476,55 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 4,
-        comment: 'Great selection of products, but a bit pricey.',
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z', // Timestamp for the review
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4, // Business owner
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z', // Timestamp for the reply
+          },
+        ],
+      },
+      {
+        reviewId: 2,
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
+      },
+      {
+        reviewId: 3,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [],
       },
     ],
     contact: {
@@ -291,9 +532,9 @@ export const businesses: Business[] = [
       email: 'info@techhub.com',
     },
     images: [
-      'https://i.imgur.com/3y70ZmY.jpeg',
-      'https://i.imgur.com/Z2J0G4k.jpeg',
-      'https://i.imgur.com/S0dd7Hh.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: [
       'https://i.imgur.com/qrs9QBg.jpeg',
@@ -339,13 +580,55 @@ export const businesses: Business[] = [
     reviews: [
       {
         reviewId: 1,
-        rating: 5,
-        comment: 'Exceptional care for my dog. Highly recommend!',
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 1,
+          username: 'Jane Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1670884441012-c5cf195c062a?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T12:00:00Z',
+        replies: [
+          {
+            replyId: 1,
+            replyText:
+              'Thank you for your feedback! We are working on pricing.',
+            replyUser: {
+              userId: 4,
+              username: 'Business Owner',
+              profilePicture:
+                'https://images.unsplash.com/photo-1494253109108-2e30c049369b?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            },
+            timestamp: '2025-02-08T14:00:00Z',
+          },
+        ],
       },
       {
         reviewId: 2,
-        rating: 3,
-        comment: 'Exceptional care for my dog. Highly recommend!',
+        rating: 2,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 2,
+          username: 'John Doe',
+          profilePicture:
+            'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T13:00:00Z',
+        replies: [],
+      },
+      {
+        reviewId: 3,
+        rating: 1,
+        comment: 'Great coffee, but a bit pricey.',
+        user: {
+          userId: 3,
+          username: 'Sam Smith',
+          profilePicture:
+            'https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        },
+        timestamp: '2025-02-08T14:30:00Z',
+        replies: [],
       },
     ],
     contact: {
@@ -353,9 +636,9 @@ export const businesses: Business[] = [
       email: 'contact@petpalclinic.com',
     },
     images: [
-      'https://i.imgur.com/F0mc5zp.jpeg',
-      'https://i.imgur.com/2V2N0gX.jpeg',
-      'https://i.imgur.com/O5wBhfd.jpeg',
+      { id: 1, url: 'https://i.imgur.com/DMQHGA0.jpeg' },
+      { id: 2, url: 'https://i.imgur.com/qrs9QBg.jpeg' },
+      { id: 3, url: 'https://i.imgur.com/XVp8T1I.jpeg' },
     ],
     coverImages: [
       'https://i.imgur.com/qrs9QBg.jpeg',
